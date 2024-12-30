@@ -35,6 +35,10 @@ def send_bulk_emails():
             body_template = request.form['body_template']
             sender_email = request.form['sender_email']
             app_password = request.form['app_password']
+            cc_emails = request.form.get('cc_emails', '')
+
+            # Process CC emails
+            cc_list = [email.strip() for email in cc_emails.split(",") if email.strip()]
 
             for recipient in recipients:
                 personalized_body = body_template.format(
@@ -42,8 +46,8 @@ def send_bulk_emails():
                     company=recipient.get("company", ""),
                     custom_message=recipient.get("custom_message", "")
                 )
-                # Send the email
-                send_email(subject, personalized_body, recipient["email"], sender_email, app_password)
+                # Send the email with CC
+                send_email(subject, personalized_body, recipient["email"], sender_email, app_password, cc_list)
             
             return "Emails sent successfully!"
         else:

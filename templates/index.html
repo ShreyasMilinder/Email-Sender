@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bulk Email Sender</title>
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <h1>Send Bulk Emails</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label for="file">Upload CSV File:</label>
-        <input type="file" name="file" required><br><br>
+    <div class="container">
+        <h1>Send Bulk Emails</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file">Upload CSV File:</label>
+            <input type="file" name="file" id="file" required>
 
-        <label for="subject">Email Subject:</label>
-        <input type="text" name="subject" required><br><br>
+            <label for="subject">Email Subject:</label>
+            <input type="text" name="subject" id="subject" required>
 
-        <label for="body_template">Email Body Template (use {name}, {company}, {custom_message}):</label>
-        <textarea name="body_template" required></textarea><br><br>
+            <label for="body_template">Email Body Template:</label>
+            <textarea name="body_template" id="body_template" placeholder="Use {name}, {company}, {custom_message}" required></textarea>
 
-        <label for="sender_email">Sender Email:</label>
-        <input type="email" name="sender_email" required><br><br>
+            <label for="sender_email">Sender Email:</label>
+            <input type="email" name="sender_email" id="sender_email" required>
 
-        <label for="app_password">App Password:</label>
-        <input type="password" name="app_password" required><br><br>
+            <label for="app_password">App Password:</label>
+            <input type="password" name="app_password" id="app_password" required>
 
-        <button type="submit">Send Emails</button>
-    </form>
+            <label for="cc_emails">CC Email(s) (comma-separated):</label>
+            <input type="text" name="cc_emails" id="cc_emails" placeholder="e.g., cc1@example.com, cc2@example.com">
+
+            <button type="submit" class="button-85" role="button">Send Emails</button>
+        </form>
+    </div>
 </body>
 </html>
